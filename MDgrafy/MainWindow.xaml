@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MDgrafy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MD Graf" Height="650" Width="850" ResizeMode="CanMinimize"
+        
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -16,23 +17,25 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
+    <!-- GŁÓWNY GRID -->
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Canvas 
-            Grid.Column="1" 
+        <Canvas Grid.Column="1" 
             Grid.RowSpan="3" 
             Margin="10" 
             Name="MainCanvas"
-            Height="380"
-            Width="320"
+            Height="450"
+            Width="450"
             Background="Gray"/>
+
+        
     </Grid>
 </Window>
