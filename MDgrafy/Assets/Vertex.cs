@@ -10,7 +10,7 @@ using System.Windows.Shapes;
 
 namespace MDgrafy.Assets
 {
-    internal class Vertex
+    public partial class Vertex
     {
         private int index;
         private double x;
