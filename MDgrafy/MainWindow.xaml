@@ -18,7 +18,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <!-- GŁÓWNY GRID -->
-    <Grid>
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="60*"/>
@@ -39,7 +39,8 @@
         <!-- POSZCZEGÓLNE GRIDY -->
         <!-- 1 -->
         <Grid Grid.Column="0"
-              Grid.Row="0">
+              Grid.Row="0"
+              Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -60,7 +61,8 @@
 
         <!-- 2 -->
         <Grid Grid.Column="0"
-              Grid.Row="1">
+              Grid.Row="1"
+              Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -90,7 +92,8 @@
         
         <!-- 3 -->
         <Grid Grid.Column="0"
-              Grid.Row="2">
+              Grid.Row="2"
+              Margin="10">
 
         </Grid>
 
