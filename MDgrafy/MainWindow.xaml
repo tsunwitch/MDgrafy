@@ -17,10 +17,22 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid>
-        <StackPanel>
-            <materialDesign:Card Padding="32" Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
-            </materialDesign:Card>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Canvas 
+            Grid.Column="1" 
+            Grid.RowSpan="3" 
+            Margin="10" 
+            Name="MainCanvas"
+            Height="380"
+            Width="320"
+            Background="Gray"/>
     </Grid>
 </Window>
