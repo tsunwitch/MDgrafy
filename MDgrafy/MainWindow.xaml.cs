@@ -29,6 +29,24 @@ namespace MDgrafy
             InitializeComponent();
         }
 
-        
+        private void BTN_GenerateGraph_Click(object sender, RoutedEventArgs e)
+        {
+            MainCanvas.Children.Clear();
+
+            if (TB_NumberOfPoints.Text == "")
+            {
+                MessageBox.Show("Nie wpisano ilości punktów", "Uwaga!");
+            }
+            else
+            {
+                numberOfPoints = Convert.ToInt32(TB_NumberOfPoints.Text);
+
+                for (int i = 0; i < numberOfPoints; i++)
+                {
+                    new Vertex(MainCanvas, i);
+                }
+            }
+
+        }
     }
 }

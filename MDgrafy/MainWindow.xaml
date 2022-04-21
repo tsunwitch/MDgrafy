@@ -36,6 +36,68 @@
             Width="450"
             Background="Gray"/>
 
+        <!-- POSZCZEGÓLNE GRIDY -->
+        <!-- 1 -->
+        <Grid Grid.Column="0"
+              Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label   Width="100"
+                     Height="30"
+                     Content="Ilość punktów"
+                     FontSize="14"
+                     Grid.Column="0"/>
+
+            <TextBox Width="30"
+                     Height="30"
+                     Grid.Column="1"
+                     Name="TB_NumberOfPoints"
+                     HorizontalAlignment="Left"/>
+        </Grid>
+
+        <!-- 2 -->
+        <Grid Grid.Column="0"
+              Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="auto"
+                    Margin="10"
+                    ToolTip="Resource name: MaterialDesignRaisedButton"
+                    Content="GENERUJ GRAF"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Name="BTN_GenerateGraph" 
+                    Click="BTN_GenerateGraph_Click"
+                    Grid.Column="0"/>
+
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="auto"
+                    Margin="10"
+                    ToolTip="Resource name: MaterialDesignRaisedButton"
+                    Content="OBLICZ"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Name="BTN_CalculateGraph"
+                    Grid.Column="1"/>
+
+        </Grid>
+
         
+        <!-- 3 -->
+        <Grid Grid.Column="0"
+              Grid.Row="2">
+
+        </Grid>
+
+
+
+
+
+
     </Grid>
 </Window>
