@@ -21,20 +21,14 @@ namespace MDgrafy
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Random rnd = new Random();
+        private Random rnd = new Random();
+        private int numberOfPoints;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            //funkcja generująca losowe punkty
-            int pointCount = rnd.Next(3, 10); //max ilosc punktow
-
-            for (int i = 0; i < pointCount; i++)
-            {
-                new Vertex(MainCanvas, i);
-            }
-
         }
+
+        
     }
 }
