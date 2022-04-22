@@ -62,10 +62,10 @@ namespace MDgrafy
                         var line = new Line();
                         line.Stroke = new BrushConverter().ConvertFromString("#4A148C") as Brush;
                         line.StrokeThickness = 2;
-                        line.X1 = vertexList[i].X;
-                        line.Y1 = vertexList[i].Y;
-                        line.X2 = vertexList[j].X;
-                        line.Y2 = vertexList[j].Y;
+                        line.X1 = vertexList[i].X+12.5;
+                        line.Y1 = vertexList[i].Y+12.5;
+                        line.X2 = vertexList[j].X+12.5;
+                        line.Y2 = vertexList[j].Y+12.5;
                         MainCanvas.Children.Add(line);
                     }
                 }
