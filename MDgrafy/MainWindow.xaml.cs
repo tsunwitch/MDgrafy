@@ -34,6 +34,7 @@ namespace MDgrafy
         private void BTN_GenerateGraph_Click(object sender, RoutedEventArgs e)
         {
             MainCanvas.Children.Clear();
+            vertexList.Clear();
 
             if (TB_NumberOfPoints.Text == "")
             {
