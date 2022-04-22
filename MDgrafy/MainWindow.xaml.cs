@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace MDgrafy
 {
@@ -23,6 +24,7 @@ namespace MDgrafy
     {
         private Random rnd = new Random();
         private int numberOfPoints;
+        private List<Vertex> vertexList = new List<Vertex>();
 
         public MainWindow()
         {
@@ -32,6 +34,7 @@ namespace MDgrafy
         private void BTN_GenerateGraph_Click(object sender, RoutedEventArgs e)
         {
             MainCanvas.Children.Clear();
+            vertexList.Clear();
 
             if (TB_NumberOfPoints.Text == "")
             {
@@ -41,9 +44,19 @@ namespace MDgrafy
             {
                 numberOfPoints = Convert.ToInt32(TB_NumberOfPoints.Text);
 
+                //Vertexy przy tworzeniu dodają się do listy
                 for (int i = 0; i < numberOfPoints; i++)
                 {
-                    new Vertex(MainCanvas, i);
+                    vertexList.Add(new Vertex(MainCanvas, i));
+                }
+
+                //Tworzenie krawędzi
+                for (int i = 0; i < numberOfPoints; i++)
+                {
+                    for (int j = 0; j < numberOfPoints; j++)
+                    {
+                        new Edge(MainCanvas, vertexList[i], vertexList[j], i);
+                    }
                 }
             }
 
