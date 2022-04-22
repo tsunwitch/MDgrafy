@@ -44,18 +44,13 @@ namespace MDgrafy
             {
                 numberOfPoints = Convert.ToInt32(TB_NumberOfPoints.Text);
 
+                //Vertexy przy tworzeniu dodają się do listy
                 for (int i = 0; i < numberOfPoints; i++)
                 {
                     vertexList.Add(new Vertex(MainCanvas, i));
                 }
 
-                //test wypisywania wspolrzednych
-                foreach(Vertex v in vertexList)
-                {
-                    Debug.WriteLine($"{v.X}, {v.Y}");
-                }
-
-                //rysowanie linii do wszystkich punktów
+                //Tworzenie krawędzi
                 for (int i = 0; i < numberOfPoints; i++)
                 {
                     for (int j = 0; j < numberOfPoints; j++)
