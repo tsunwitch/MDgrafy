@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace MDgrafy
 {
@@ -23,6 +24,7 @@ namespace MDgrafy
     {
         private Random rnd = new Random();
         private int numberOfPoints;
+        private List<Vertex> vertexList = new List<Vertex>();
 
         public MainWindow()
         {
@@ -43,7 +45,29 @@ namespace MDgrafy
 
                 for (int i = 0; i < numberOfPoints; i++)
                 {
-                    new Vertex(MainCanvas, i);
+                    vertexList.Add(new Vertex(MainCanvas, i));
+                }
+
+                //test wypisywania wspolrzednych
+                foreach(Vertex v in vertexList)
+                {
+                    Debug.WriteLine($"{v.X}, {v.Y}");
+                }
+
+                //rysowanie linii do wszystkich punktów
+                for (int i = 0; i < numberOfPoints; i++)
+                {
+                    for (int j = 0; j < numberOfPoints; j++)
+                    {
+                        var line = new Line();
+                        line.Stroke = new BrushConverter().ConvertFromString("#4A148C") as Brush;
+                        line.StrokeThickness = 2;
+                        line.X1 = vertexList[i].X;
+                        line.Y1 = vertexList[i].Y;
+                        line.X2 = vertexList[j].X;
+                        line.Y2 = vertexList[j].Y;
+                        MainCanvas.Children.Add(line);
+                    }
                 }
             }
 
