@@ -60,14 +60,7 @@ namespace MDgrafy
                 {
                     for (int j = 0; j < numberOfPoints; j++)
                     {
-                        var line = new Line();
-                        line.Stroke = new BrushConverter().ConvertFromString("#4A148C") as Brush;
-                        line.StrokeThickness = 2;
-                        line.X1 = vertexList[i].X+12.5;
-                        line.Y1 = vertexList[i].Y+12.5;
-                        line.X2 = vertexList[j].X+12.5;
-                        line.Y2 = vertexList[j].Y+12.5;
-                        MainCanvas.Children.Add(line);
+                        new Edge(MainCanvas, vertexList[i], vertexList[j], i);
                     }
                 }
             }
