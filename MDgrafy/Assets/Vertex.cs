@@ -55,11 +55,13 @@ namespace MDgrafy.Assets
 
             ellipse.SetValue(Canvas.LeftProperty, this.X);
             ellipse.SetValue(Canvas.TopProperty, this.Y);
+            ellipse.SetValue(Canvas.ZIndexProperty, 1);
 
             // Poprawa ustawienia labela w vertexie
             double labelOffset = (Index <= 8) ? this.x + 5 : this.x;
             label.SetValue(Canvas.LeftProperty, labelOffset);
             label.SetValue(Canvas.TopProperty, this.y);
+            label.SetValue(Canvas.ZIndexProperty, 2);
         }
     }
 }
