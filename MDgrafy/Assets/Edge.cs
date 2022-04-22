@@ -33,12 +33,13 @@ namespace MDgrafy.Assets
             Index = indx + 1;
 
             var line = new Line();
-            line.Stroke = new BrushConverter().ConvertFromString("#4A148C") as Brush;
+            line.Stroke = new BrushConverter().ConvertFromString("#e09b22") as Brush;
             line.StrokeThickness = 2;
             line.X1 = X1 + 12.5;
             line.Y1 = Y1 + 12.5;
             line.X2 = X2 + 12.5;
             line.Y2 = Y2 + 12.5;
+            line.SetValue(Canvas.ZIndexProperty, 0);
             cnvs.Children.Add(line);
         }
     }
