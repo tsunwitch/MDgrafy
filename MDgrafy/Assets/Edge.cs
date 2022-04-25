@@ -24,6 +24,7 @@ namespace MDgrafy.Assets
         public double Y2 { get { return y2; } set { y2 = value; } }
         public int Index { get { return index; } set { index = value; } }
         public static Canvas Canvas { get { return canvas; } set { canvas = value; } }
+        public static List<List<int>> Connections = new List<List<int>>();
 
 
         public Edge(List<Vertex> vertexList, int indx)
@@ -31,6 +32,7 @@ namespace MDgrafy.Assets
             Random random = new Random();
 
             int numberOfEdges = random.Next(1, vertexList.Count);
+            int numberOfVertexes = vertexList.Count;
             int tempIndex;
 
             List<int> vertexesToLinkIndexes = new List<int>();
@@ -38,10 +40,8 @@ namespace MDgrafy.Assets
             // Losowanie punktów indexów vertexów do połączenia do danego punktu
             for (int i = 0; i < numberOfEdges; i++)
             {
-                do
-                {
-                    tempIndex = random.Next(numberOfEdges);
-                } while(vertexesToLinkIndexes.Contains(tempIndex));
+                do { tempIndex = random.Next(numberOfVertexes) ;} 
+                while(vertexesToLinkIndexes.Contains(tempIndex) || tempIndex == indx);
                 vertexesToLinkIndexes.Add(tempIndex);
             }
 
@@ -63,7 +63,41 @@ namespace MDgrafy.Assets
                 line.Y2 = Y2 + 12.5;
                 line.SetValue(Canvas.ZIndexProperty, 0);
                 Canvas.Children.Add(line);
+
+                Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i] });
             }
+        }
+
+        public static string ShowConnections()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < Connections.Count; i++)
+            {
+                for (int j = 0; j < Connections[i].Count; j++)
+                {
+                    if (j == 0)
+                        sb.Append($"e{i + 1} = ( v{Connections[i][j] + 1},");
+                    else
+                        sb.Append($" v{Connections[i][j] + 1} )\n");
+                }
+            }
+            return sb.ToString();
+        }
+
+        public static string ShowEdges()
+        {
+            StringBuilder sb = new StringBuilder();
+            string txt = "E = { ";
+
+            for (int i = 0; i < Connections.Count; i++)
+            {
+                if (i == Connections.Count - 1)
+                    sb.Append($"e{i + 1}");
+                else
+                    sb.Append($"e{i + 1}, ");
+            }
+            return txt + sb.ToString() + " }\n"; ;
         }
     }
 }
