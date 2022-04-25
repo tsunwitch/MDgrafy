@@ -24,17 +24,24 @@
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Canvas Grid.Column="1" 
-            Grid.RowSpan="3" 
+
+        <Border  Grid.Column="1" 
+                 Grid.RowSpan="3" >
+            <Canvas
             Margin="10" 
             Name="MainCanvas"
             Height="450"
             Width="450"
             Background="Gray"/>
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Border.Effect>
+        </Border>
 
         <!-- POSZCZEGÓLNE GRIDY -->
         <!-- 1 -->
@@ -61,7 +68,7 @@
 
         <!-- 2 -->
         <Grid Grid.Column="0"
-              Grid.Row="1"
+              Grid.Row="2"
               Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -89,7 +96,7 @@
 
         </Grid>
 
-        
+
         <!-- 3 -->
         <Grid Grid.Column="0"
               Grid.Row="2"
