@@ -23,6 +23,7 @@ namespace MDgrafy.Assets
         public double Y { get { return y; } set { y = value; } }
         public int Index { get { return index; } set { index = value; } }
         public static Canvas Canvas { get { return canvas; } set { canvas = value; } }
+        public static List<Vertex> Vertexes = new List<Vertex>();
 
         public Vertex(int indx)
         {
@@ -65,6 +66,23 @@ namespace MDgrafy.Assets
             label.SetValue(Canvas.LeftProperty, labelOffset);
             label.SetValue(Canvas.TopProperty, this.y);
             label.SetValue(Canvas.ZIndexProperty, 2);
+
+            Vertexes.Add(this);
+        }
+
+        public static string ShowVertexes()
+        {
+            StringBuilder sb = new StringBuilder();
+            string txt = "V = { ";
+
+            for (int i = 0; i < Vertexes.Count; i++)
+            {
+                if (i == Vertexes.Count - 1)
+                    sb.Append($"v{i + 1}");
+                else
+                    sb.Append($"v{i + 1}, ");
+            }
+            return txt + sb.ToString() + " }\n"; ;
         }
     }
 }

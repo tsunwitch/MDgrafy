@@ -36,16 +36,19 @@ namespace MDgrafy
 
         private void BTN_GenerateGraph_Click(object sender, RoutedEventArgs e)
         {
+            Vertex.Vertexes.Clear();
+            Edge.Connections.Clear();
             MainCanvas.Children.Clear();
             vertexList.Clear();
+            TBlock_Connections.Text = "";
 
-            if (TB_NumberOfPoints.Text == "")
+            if (TBox_NumberOfPoints.Text == "")
             {
                 MessageBox.Show("Nie wpisano ilości punktów", "Uwaga!");
             }
             else
             {
-                numberOfPoints = Convert.ToInt32(TB_NumberOfPoints.Text);
+                numberOfPoints = Convert.ToInt32(TBox_NumberOfPoints.Text);
 
                 // Vertexy przy tworzeniu dodają się do listy
                 for (int i = 0; i < numberOfPoints; i++)
@@ -60,6 +63,11 @@ namespace MDgrafy
                 }
             }
 
+        }
+
+        private void BTN_CalculateGraph_Click(object sender, RoutedEventArgs e)
+        {
+            TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections();
         }
     }
 }

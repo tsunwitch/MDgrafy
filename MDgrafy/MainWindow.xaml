@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MDgrafy"
         mc:Ignorable="d"
-        Title="MD Graf" Height="650" Width="850" ResizeMode="CanMinimize"
+        Title="MD Graf" Height="700" Width="900" ResizeMode="CanMinimize"
         
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -20,8 +20,8 @@
     <!-- GŁÓWNY GRID -->
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40*"/>
-            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -62,11 +62,27 @@
             <TextBox Width="30"
                      Height="30"
                      Grid.Column="1"
-                     Name="TB_NumberOfPoints"
+                     Name="TBox_NumberOfPoints"
                      HorizontalAlignment="Left"/>
         </Grid>
 
         <!-- 2 -->
+        <Grid Grid.Column="0"
+              Grid.Row="1"
+              Margin="10">
+
+            <ScrollViewer>
+                <TextBlock Margin="10"
+                       Name="TBlock_Connections"
+                       TextWrapping="Wrap"
+                       LineHeight="10"
+                       FontSize="15"/>
+            </ScrollViewer>
+
+        </Grid>
+        
+        
+        <!-- 3 -->
         <Grid Grid.Column="0"
               Grid.Row="2"
               Margin="10">
@@ -92,17 +108,10 @@
                     Content="OBLICZ"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Name="BTN_CalculateGraph"
-                    Grid.Column="1"/>
+                    Grid.Column="1" Click="BTN_CalculateGraph_Click"/>
 
         </Grid>
-
-
-        <!-- 3 -->
-        <Grid Grid.Column="0"
-              Grid.Row="2"
-              Margin="10">
-
-        </Grid>
+        
 
 
 
