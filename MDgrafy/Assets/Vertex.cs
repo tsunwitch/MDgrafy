@@ -15,25 +15,28 @@ namespace MDgrafy.Assets
         private int index;
         private double x;
         private double y;
+        private static Canvas canvas;
+
         private Random rnd = new Random();
 
         public double X { get { return x; } set { x = value; } }
         public double Y { get { return y; } set { y = value; } }
         public int Index { get { return index; } set { index = value; } }
+        public static Canvas Canvas { get { return canvas; } set { canvas = value; } }
 
-        public Vertex(Canvas cnvs, int indx)
+        public Vertex(int indx)
         {
-            X = rnd.Next((int)cnvs.Width);
-            Y = rnd.Next((int)cnvs.Height);
+            X = rnd.Next((int)Canvas.Width);
+            Y = rnd.Next((int)Canvas.Height);
 
             // Poprawa vertexow na krawedziach
-            if (X >= (int)cnvs.Width - 35) X -= 35;
+            if (X >= (int)Canvas.Width - 35) X -= 35;
             if (X <= 35) X += 35;
 
-            if (Y >= (int)cnvs.Height - 25) Y -= 35;
+            if (Y >= (int)Canvas.Height - 25) Y -= 35;
             if (Y <= 35) Y += 35;
 
-            Index = indx + 1;
+            Index = indx;
 
             Ellipse ellipse = new Ellipse()
             {
@@ -50,8 +53,8 @@ namespace MDgrafy.Assets
                 Foreground = new BrushConverter().ConvertFromString("#dec9e9") as Brush
             };
 
-            cnvs.Children.Add(ellipse);
-            cnvs.Children.Add(label);
+            Canvas.Children.Add(ellipse);
+            Canvas.Children.Add(label);
 
             ellipse.SetValue(Canvas.LeftProperty, this.X);
             ellipse.SetValue(Canvas.TopProperty, this.Y);

@@ -29,6 +29,9 @@ namespace MDgrafy
         public MainWindow()
         {
             InitializeComponent();
+
+            Edge.Canvas = MainCanvas;
+            Vertex.Canvas = MainCanvas;
         }
 
         private void BTN_GenerateGraph_Click(object sender, RoutedEventArgs e)
@@ -44,19 +47,16 @@ namespace MDgrafy
             {
                 numberOfPoints = Convert.ToInt32(TB_NumberOfPoints.Text);
 
-                //Vertexy przy tworzeniu dodają się do listy
+                // Vertexy przy tworzeniu dodają się do listy
                 for (int i = 0; i < numberOfPoints; i++)
                 {
-                    vertexList.Add(new Vertex(MainCanvas, i));
+                    vertexList.Add(new Vertex(i));
                 }
 
-                //Tworzenie krawędzi
+                // Tworzenie krawędzi
                 for (int i = 0; i < numberOfPoints; i++)
                 {
-                    for (int j = 0; j < numberOfPoints; j++)
-                    {
-                        new Edge(MainCanvas, vertexList[i], vertexList[j], i);
-                    }
+                    new Edge(vertexList, i);
                 }
             }
 
