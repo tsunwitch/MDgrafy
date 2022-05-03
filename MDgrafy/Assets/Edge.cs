@@ -48,12 +48,16 @@ namespace MDgrafy.Assets
             X1 = vertexList[indx].X;
             Y1 = vertexList[indx].Y;
 
+            // Informacja czy zapisujemy połączenie do Connections
+            bool isUnique = true;
+
             for (int i = 0; i < vertexesToLinkIndexes.Count; i++)
             {
                 X2 = vertexList[vertexesToLinkIndexes[i]].X;
                 Y2 = vertexList[vertexesToLinkIndexes[i]].Y;
                 Index = indx;
 
+                // Rysowawnie linii
                 var line = new Line();
                 line.Stroke = new BrushConverter().ConvertFromString("#e09b22") as Brush;
                 line.StrokeThickness = 2;
@@ -64,7 +68,20 @@ namespace MDgrafy.Assets
                 line.SetValue(Canvas.ZIndexProperty, 0);
                 Canvas.Children.Add(line);
 
-                Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i] });
+                // Szukanie powtórzeń
+                for (int j = 0; j < Connections.Count(); j++)
+                {
+                    if(indx == Connections[j][1] && vertexesToLinkIndexes[i] == Connections[j][0])
+                    {
+                        isUnique = false;
+                    }
+                }
+
+                // Zapisywanie do Connections
+                if(isUnique == true)
+                {
+                    Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i] });
+                }
             }
         }
 
