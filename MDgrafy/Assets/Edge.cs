@@ -83,13 +83,13 @@ namespace MDgrafy.Assets
                 // Zapisywanie do Connections
                 if(isUnique == true)
                 {
-                    Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i] });
+                    Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i], Weight });
                 }
 
-                //Losowanie wagi dla Edge
+                // Losowanie wagi dla Edge
                 Weight = random.Next(1, 8);
 
-                //Wypisywanie wagi nad Edge
+                // Wypisywanie wagi nad Edge
                 Label label = new Label()
                 {
                     FontSize = 13,
@@ -102,6 +102,7 @@ namespace MDgrafy.Assets
                 label.SetValue(Canvas.LeftProperty, (this.x1 + this.x2)/2);
                 label.SetValue(Canvas.TopProperty, (this.y1 + this.y2)/2);
                 label.SetValue(Canvas.ZIndexProperty, 2);
+                
             }
         }
 
@@ -115,8 +116,10 @@ namespace MDgrafy.Assets
                 {
                     if (j == 0)
                         sb.Append($"e{i + 1} = ( v{Connections[i][j] + 1},");
+                    else if (j == 1)
+                        sb.Append($" v{Connections[i][j] + 1} )");
                     else
-                        sb.Append($" v{Connections[i][j] + 1} )\n");
+                        sb.Append($"    waga: {Connections[i][j] + 2}\n");
                 }
             }
             return sb.ToString();
