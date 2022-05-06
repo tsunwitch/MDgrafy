@@ -95,7 +95,7 @@ namespace MDgrafy.Assets
                     FontSize = 13,
                     Content = Weight,
                     FontWeight = FontWeights.Bold,
-                    Foreground = new BrushConverter().ConvertFromString("#dec9e9") as Brush
+                    Foreground = new BrushConverter().ConvertFromString("#ffffff") as Brush
                 };
                 Canvas.Children.Add(label);
 
