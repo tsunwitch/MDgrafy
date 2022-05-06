@@ -93,7 +93,7 @@ namespace MDgrafy.Assets
                 Label label = new Label()
                 {
                     FontSize = 13,
-                    Content = Weight,
+                    Content = $"e{Index}, {Weight}",
                     FontWeight = FontWeights.Bold,
                     Foreground = new BrushConverter().ConvertFromString("#ffffff") as Brush
                 };
