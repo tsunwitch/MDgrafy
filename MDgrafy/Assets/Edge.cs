@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -16,6 +17,7 @@ namespace MDgrafy.Assets
         private double y1;
         private double x2;
         private double y2;
+        private int weight;
         private static Canvas canvas;
 
         public double X1 { get { return x1; } set { x1 = value; } }
@@ -23,6 +25,7 @@ namespace MDgrafy.Assets
         public double X2 { get { return x2; } set { x2 = value; } }
         public double Y2 { get { return y2; } set { y2 = value; } }
         public int Index { get { return index; } set { index = value; } }
+        public int Weight { get { return weight; } set { weight = value; } }
         public static Canvas Canvas { get { return canvas; } set { canvas = value; } }
         public static List<List<int>> Connections = new List<List<int>>();
 
@@ -80,8 +83,26 @@ namespace MDgrafy.Assets
                 // Zapisywanie do Connections
                 if(isUnique == true)
                 {
-                    Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i] });
+                    Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i], Weight });
                 }
+
+                // Losowanie wagi dla Edge
+                Weight = random.Next(1, 8);
+
+                // Wypisywanie wagi nad Edge
+                Label label = new Label()
+                {
+                    FontSize = 13,
+                    Content = Weight,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = new BrushConverter().ConvertFromString("#ffffff") as Brush
+                };
+                Canvas.Children.Add(label);
+
+                label.SetValue(Canvas.LeftProperty, (this.x1 + this.x2)/2);
+                label.SetValue(Canvas.TopProperty, (this.y1 + this.y2)/2);
+                label.SetValue(Canvas.ZIndexProperty, 2);
+                
             }
         }
 
@@ -95,8 +116,10 @@ namespace MDgrafy.Assets
                 {
                     if (j == 0)
                         sb.Append($"e{i + 1} = ( v{Connections[i][j] + 1},");
+                    else if (j == 1)
+                        sb.Append($" v{Connections[i][j] + 1} )");
                     else
-                        sb.Append($" v{Connections[i][j] + 1} )\n");
+                        sb.Append($"    waga: {Connections[i][j] + 2}\n");
                 }
             }
             return sb.ToString();
