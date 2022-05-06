@@ -25,6 +25,7 @@ namespace MDgrafy
         private Random rnd = new Random();
         private int numberOfPoints;
         private List<Vertex> vertexList = new List<Vertex>();
+        private List<Edge> edgeList = new List<Edge>();
 
         public MainWindow()
         {
@@ -56,13 +57,12 @@ namespace MDgrafy
                     vertexList.Add(new Vertex(i));
                 }
 
-                // Tworzenie krawędzi
+                // Edge dodają się do własnej listy
                 for (int i = 0; i < numberOfPoints; i++)
                 {
-                    new Edge(vertexList, i);
+                    edgeList.Add(new Edge(vertexList, i));
                 }
             }
-
         }
 
         private void BTN_CalculateGraph_Click(object sender, RoutedEventArgs e)
