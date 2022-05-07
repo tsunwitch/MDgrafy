@@ -39,6 +39,7 @@ namespace MDgrafy
         {
             Vertex.Vertexes.Clear();
             Edge.Connections.Clear();
+            Edge.EdgeCount = 1;
             MainCanvas.Children.Clear();
             vertexList.Clear();
             TBlock_Connections.Text = "";
