@@ -18,6 +18,7 @@ namespace MDgrafy.Assets
         private double x2;
         private double y2;
         private int weight;
+        private static int edgeCount = 1;
         private static Canvas canvas;
 
         public double X1 { get { return x1; } set { x1 = value; } }
@@ -26,6 +27,8 @@ namespace MDgrafy.Assets
         public double Y2 { get { return y2; } set { y2 = value; } }
         public int Index { get { return index; } set { index = value; } }
         public int Weight { get { return weight; } set { weight = value; } }
+        public static int EdgeCount { get { return edgeCount; } set { edgeCount = value; } }
+
         public static Canvas Canvas { get { return canvas; } set { canvas = value; } }
         public static List<List<int>> Connections = new List<List<int>>();
 
@@ -60,6 +63,19 @@ namespace MDgrafy.Assets
                 Y2 = vertexList[vertexesToLinkIndexes[i]].Y;
                 Index = indx;
 
+                // Szukanie powtórzeń
+                for (int j = 0; j < Connections.Count(); j++)
+                {
+                    if (indx == Connections[j][0] && vertexesToLinkIndexes[i] == Connections[j][1]
+                        || indx == Connections[j][1] && vertexesToLinkIndexes[i] == Connections[j][0])
+                    {
+                        isUnique = false;
+                        break;
+                    }
+                }
+
+                if (!isUnique) continue;
+
                 // Rysowawnie linii
                 var line = new Line();
                 line.Stroke = new BrushConverter().ConvertFromString("#e09b22") as Brush;
@@ -71,20 +87,8 @@ namespace MDgrafy.Assets
                 line.SetValue(Canvas.ZIndexProperty, 0);
                 Canvas.Children.Add(line);
 
-                // Szukanie powtórzeń
-                for (int j = 0; j < Connections.Count(); j++)
-                {
-                    if(indx == Connections[j][1] && vertexesToLinkIndexes[i] == Connections[j][0])
-                    {
-                        isUnique = false;
-                    }
-                }
-
                 // Zapisywanie do Connections
-                if(isUnique == true)
-                {
-                    Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i], Weight });
-                }
+                Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i], Weight });
 
                 // Losowanie wagi dla Edge
                 Weight = random.Next(1, 8);
@@ -93,11 +97,13 @@ namespace MDgrafy.Assets
                 Label label = new Label()
                 {
                     FontSize = 13,
-                    Content = $"e{Index}, {Weight}",
+                    Content = $"e{EdgeCount}, {Weight}",
                     FontWeight = FontWeights.Bold,
                     Foreground = new BrushConverter().ConvertFromString("#ffffff") as Brush
                 };
                 Canvas.Children.Add(label);
+
+                EdgeCount++;
 
                 label.SetValue(Canvas.LeftProperty, (this.x1 + this.x2)/2);
                 label.SetValue(Canvas.TopProperty, (this.y1 + this.y2)/2);
