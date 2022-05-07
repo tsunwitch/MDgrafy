@@ -17,6 +17,12 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
+    <Window.Resources>
+        
+    </Window.Resources>
+
+    
+
     <!-- GŁÓWNY GRID -->
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -71,13 +77,39 @@
               Grid.Row="1"
               Margin="10">
 
-            <ScrollViewer>
-                <TextBlock Margin="10"
+
+            
+
+            <materialDesign:Card>
+                <TabControl
+    
+    materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+    Style="{DynamicResource MaterialDesignFilledTabControl}">
+                    <!-- TAB 1 -->
+                    <TabItem Header="Dane grafu">
+                        <ScrollViewer>
+                            
+                            <TextBlock Margin="10"
                        Name="TBlock_Connections"
                        TextWrapping="Wrap"
                        LineHeight="10"
                        FontSize="15"/>
-            </ScrollViewer>
+                            
+                        </ScrollViewer>
+                    </TabItem>
+                    
+                    <!-- TAB 2 -->
+                    <TabItem Header="Cykle-3">
+    
+                    </TabItem>
+
+                    <!-- TAB 3 -->
+                    <TabItem Header="Cykle-4">
+
+                    </TabItem>
+                </TabControl>
+            </materialDesign:Card>
+
 
         </Grid>
         
@@ -87,7 +119,6 @@
               Grid.Row="2"
               Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -100,15 +131,6 @@
                     Name="BTN_GenerateGraph" 
                     Click="BTN_GenerateGraph_Click"
                     Grid.Column="0"/>
-
-            <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                    Width="auto"
-                    Margin="10"
-                    ToolTip="Resource name: MaterialDesignRaisedButton"
-                    Content="OBLICZ"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Name="BTN_CalculateGraph"
-                    Grid.Column="1" Click="BTN_CalculateGraph_Click"/>
 
         </Grid>
         
