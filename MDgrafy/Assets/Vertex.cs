@@ -41,15 +41,15 @@ namespace MDgrafy.Assets
 
             Ellipse ellipse = new Ellipse()
             {
-                Width = 25,
-                Height = 25,
+                Width = 27,
+                Height = 27,
                 Fill = new BrushConverter().ConvertFromString("#4A148C") as Brush
             };
 
             Label label = new Label()
             {
                 FontSize = 13,
-                Content = Convert.ToString(index + 1),
+                Content = $"v{index + 1}",
                 FontWeight = FontWeights.Bold,
                 Foreground = new BrushConverter().ConvertFromString("#dec9e9") as Brush
             };
@@ -62,9 +62,9 @@ namespace MDgrafy.Assets
             ellipse.SetValue(Canvas.ZIndexProperty, 1);
 
             // Poprawa ustawienia labela w vertexie
-            double labelOffset = (Index <= 8) ? this.x + 5 : this.x;
+            double labelOffset = (Index <= 8) ? this.x + 2 : this.x - 1;
             label.SetValue(Canvas.LeftProperty, labelOffset);
-            label.SetValue(Canvas.TopProperty, this.y);
+            label.SetValue(Canvas.TopProperty, this.y + 1);
             label.SetValue(Canvas.ZIndexProperty, 2);
 
             Vertexes.Add(this);
