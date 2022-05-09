@@ -94,7 +94,11 @@ namespace MDgrafy.Assets
 
             for (int i = 0; i < Degrees.Count; i++)
             {
-                sb.Append($"v{Vertexes[i].Index + 1}: {Degrees[i]}, ");
+                //Wyświetlanie z opisanymi wierzchołkami
+                //sb.Append($"v{Vertexes[i].Index + 1}: {Degrees[i]}, ");
+
+                //Wyświetlanie samego ciągu
+                sb.Append($"{Degrees[i]}, ");
             }
 
             return sb.ToString();
