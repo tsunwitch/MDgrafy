@@ -24,6 +24,7 @@ namespace MDgrafy.Assets
         public int Index { get { return index; } set { index = value; } }
         public static Canvas Canvas { get { return canvas; } set { canvas = value; } }
         public static List<Vertex> Vertexes = new List<Vertex>();
+        public static List<int> Degrees = new List<int>();
 
         public Vertex(int indx)
         {
@@ -68,6 +69,39 @@ namespace MDgrafy.Assets
             label.SetValue(Canvas.ZIndexProperty, 2);
 
             Vertexes.Add(this);
+        }
+
+        public static string ShowDegrees()
+        {
+            StringBuilder sb = new StringBuilder();
+            Degrees.Clear();
+
+            for (int i = 0; i < Vertexes.Count; i++)
+            {
+                int tempDegree = 0;
+                
+
+                for (int j = 0; j < Edge.Connections.Count; j++)
+                {
+                    if (Edge.Connections[j][0] == Vertexes[i].Index || Edge.Connections[j][1] == Vertexes[i].Index)
+                    {
+                        tempDegree+=1;
+                    }
+                }
+
+                Degrees.Add(tempDegree);
+            }
+
+            for (int i = 0; i < Degrees.Count; i++)
+            {
+                //Wyświetlanie z opisanymi wierzchołkami
+                //sb.Append($"v{Vertexes[i].Index + 1}: {Degrees[i]}, ");
+
+                //Wyświetlanie samego ciągu
+                sb.Append($"{Degrees[i]}, ");
+            }
+
+            return sb.ToString();
         }
 
         public static string ShowVertexes()
