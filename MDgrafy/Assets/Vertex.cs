@@ -94,7 +94,7 @@ namespace MDgrafy.Assets
 
             for (int i = 0; i < Degrees.Count; i++)
             {
-                sb.Append($"v{Vertexes[i]}: {Degrees[i]}, ");
+                sb.Append($"v{Vertexes[i].Index + 1}: {Degrees[i]}, ");
             }
 
             return sb.ToString();
