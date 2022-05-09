@@ -68,7 +68,7 @@ namespace MDgrafy
 
         private void BTN_CalculateGraph_Click(object sender, RoutedEventArgs e)
         {
-            TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections();
+            TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections() + "\n" + Vertex.ShowDegrees();
         }
     }
 }
