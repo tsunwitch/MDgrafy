@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using Microsoft.Win32;
+using System.IO;
 
 namespace MDgrafy
 {
@@ -82,9 +84,10 @@ namespace MDgrafy
             TBlock_Cycle3.Text = Cycle.ShowCycles3();
         }
 
-        private void BTN_GenerateRaport_Click(object sender, RoutedEventArgs e)
+        private async void BTN_GenerateRaport_Click(object sender, RoutedEventArgs e)
         {
-
+            await Writer.GenerateRaport();
+            TBlock_Connections.Text += "\n\nWygenerowano raport do pliku raport.txt";
         }
     }
 }
