@@ -25,18 +25,6 @@ namespace MDgrafy.Assets
                 list.Add(new List<int> { Edge.Connections[i][1], Edge.Connections[i][0] });
             }
 
-            for (int i = 0; i < list.Count(); i++)
-            {
-                sb.Append($"{i} - ");
-                for (int j = 0; j < list[i].Count(); j++)
-                {
-                    sb.Append($"{list[i][j]} ");
-                }
-                sb.Append("\n");
-            }
-
-            sb.Append("\n"); sb.Append("\n");
-
             var results = new List<List<int>>();
 
             for (int i = 0; i < list.Count(); i++)
@@ -76,24 +64,20 @@ namespace MDgrafy.Assets
 
             for (int i = 0; i < results.Count(); i++)
             {
+                sb.Append($"{i + 1}: ");
                 for (int j = 0; j < results[i].Count(); j++)
                 {
-                    sb.Append($"{results[i][j] }");
+                    if(j == results[i].Count() - 1) 
+                        sb.Append($"v{results[i][j] + 1}");
+                    else 
+                        sb.Append($"v{results[i][j] + 1} 🠖 ");
                 }
-                sb.Append("\n");
+                sb.Append("\n\n");
             }
 
             sb.Append("\n"); sb.Append("\n");
 
-            for (int i = 0; i < Edge.Connections.Count(); i++)
-            {
-                sb.Append($"{i} - ");
-                for (int j = 0; j < Edge.Connections[i].Count() - 1; j++)
-                {
-                    sb.Append($"{Edge.Connections[i][j]} ");
-                }
-                sb.Append("\n");
-            }
+           
             return sb.ToString();
         }
 

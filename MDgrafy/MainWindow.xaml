@@ -155,16 +155,7 @@
                         </ScrollViewer>
                     </TabItem>
 
-                    <TabItem Style="{StaticResource TabItems}">
-                        <TabItem.Header>
-                            <TextBlock Text="Cykle 4" Cursor="Hand"/>
-                        </TabItem.Header>
-
-                        <ScrollViewer>
-                            <TextBlock Style="{StaticResource TextBlocks}"
-                                       Name="TBlock_Cycle4"/>
-                        </ScrollViewer>
-                    </TabItem>
+                    
                 </TabControl>
             </materialDesign:Card>
             
