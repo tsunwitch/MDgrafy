@@ -40,6 +40,7 @@ namespace MDgrafy
             Vertex.Vertexes.Clear();
             Edge.Connections.Clear();
             Edge.EdgeCount = 1;
+            
             MainCanvas.Children.Clear();
             vertexList.Clear();
             TBlock_Connections.Text = "";
@@ -63,9 +64,13 @@ namespace MDgrafy
                 {
                     edgeList.Add(new Edge(vertexList, i));
                 }
+
+                Cycle.Vertexes = vertexList;
+                Cycle.Edges = edgeList;
             }
 
             TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections() + "\n" + "Ciąg stopni wierzchołków:" + "\n" + Vertex.ShowDegrees();
+            TBlock_Cycle3.Text = Cycle.ShowCycles3();
         }
     }
 }
