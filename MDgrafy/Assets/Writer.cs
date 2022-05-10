@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MDgrafy.Assets
 {
@@ -18,6 +19,8 @@ namespace MDgrafy.Assets
             await file.WriteLineAsync("Raport z wygenerowanego grafu\n\n" + "Dane: \n");
             await file.WriteLineAsync("G = ( V, E )\n\n" + "Zbiór krawędzi i punktów:\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n\n" + "Zbiór połączeń:\n" + Edge.ShowConnections() + "\n\n" + "Zbiór wag dla poszczególnych połączeń\n" + Edge.ShowWeights() + "\n\n");
             await file.WriteLineAsync("Znalezione cykle 3:\n" + Cycle.ShowCycles3());
+
+            MessageBox.Show($"Raport aplikacji został zapisany w: \n {Directory.GetCurrentDirectory()}", "Raport aplikacji");
         }
     }
 }
