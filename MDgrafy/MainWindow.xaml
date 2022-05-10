@@ -140,7 +140,7 @@
 
                         <ScrollViewer>
                             <TextBlock Style="{StaticResource TextBlocks}"
-                                       Name="TBlock_Deegres"/>
+                                       Name="TBlock_Degrees"/>
                         </ScrollViewer>
                     </TabItem>
 

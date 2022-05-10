@@ -92,11 +92,17 @@ namespace MDgrafy.Assets
                 Degrees.Add(tempDegree);
             }
 
+            sb.Append("Stopnie poszczególnych wierzchołków: \n");
             for (int i = 0; i < Degrees.Count; i++)
             {
                 //Wyświetlanie z opisanymi wierzchołkami
-                //sb.Append($"v{Vertexes[i].Index + 1}: {Degrees[i]}, ");
+                
+                sb.Append($"v{Vertexes[i].Index + 1}: {Degrees[i]}, \n");
+            }
 
+            sb.Append("\nCiąg stopni wierzchołków: \n");
+            for (int i = 0; i < Degrees.Count; i++)
+            {
                 //Wyświetlanie samego ciągu
                 sb.Append($"{Degrees[i]}, ");
             }
