@@ -62,13 +62,56 @@ namespace MDgrafy.Assets
                 }
             }
 
+            var cycleWeights = new List<int>();
+            int tempWeight = 0;
+            bool edge = false;
+
+            for (int i = 0; i < results.Count(); i++)
+            {
+                for (int j = 0; j < results[i].Count(); j++)
+                {
+                    if (j == results[i].Count() - 1)
+                    {
+                        j = 0;
+                        edge = true;
+                    }
+
+                    for (int k = 0; k < Edge.Connections.Count(); k++)
+                    {
+                        if(!edge)
+                        {
+                            if (Edge.Connections[k][0] == results[i][j] && Edge.Connections[k][1] == results[i][j + 1]
+                            || Edge.Connections[k][1] == results[i][j] && Edge.Connections[k][0] == results[i][j + 1])
+                            {
+                                tempWeight += Edge.Connections[k][2];
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            if (j == results[i].Count()) j = results[i].Count() - 1;
+                            if (Edge.Connections[k][0] == results[i][j] && Edge.Connections[k][1] == results[i][results[i].Count() - 1]
+                            || Edge.Connections[k][1] == results[i][j] && Edge.Connections[k][0] == results[i][results[i].Count() - 1])
+                            {
+                                tempWeight += Edge.Connections[k][2];
+                                j = results[i].Count();
+                            }
+                        }
+                    }
+                }
+                cycleWeights.Add(tempWeight);
+                tempWeight = 0;
+                edge = false;
+            }
+           
+
             for (int i = 0; i < results.Count(); i++)
             {
                 sb.Append($"{i + 1}: ");
                 for (int j = 0; j < results[i].Count(); j++)
                 {
                     if(j == results[i].Count() - 1) 
-                        sb.Append($"v{results[i][j] + 1}");
+                        sb.Append($"v{results[i][j] + 1}  Waga cyklu: {cycleWeights[i]}");
                     else 
                         sb.Append($"v{results[i][j] + 1} 🠖 ");
                 }
