@@ -82,9 +82,9 @@ namespace MDgrafy
             TBlock_Cycle3.Text = Cycle.ShowCycles3();
         }
 
-        private void BTN_GenerateRaport_Click(object sender, RoutedEventArgs e)
+        private async void BTN_GenerateRaport_Click(object sender, RoutedEventArgs e)
         {
-
+            await Writer.GenerateRaport();
         }
     }
 }
