@@ -87,11 +87,11 @@ namespace MDgrafy.Assets
                 line.SetValue(Canvas.ZIndexProperty, 0);
                 Canvas.Children.Add(line);
 
-                // Zapisywanie do Connections
-                Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i], Weight });
-
                 // Losowanie wagi dla Edge
                 Weight = random.Next(1, 8);
+
+                // Zapisywanie do Connections
+                Connections.Add(new List<int> { Index, vertexesToLinkIndexes[i], Weight });
 
                 // Wypisywanie wagi nad Edge
                 Label label = new Label()
@@ -125,9 +125,21 @@ namespace MDgrafy.Assets
                     else if (j == 1)
                         sb.Append($" v{Connections[i][j] + 1} )");
                     else
-                        sb.Append($"    waga: {Connections[i][j] + 2}\n");
+                        sb.Append($"    waga: {Connections[i][j]}\n");
                 }
             }
+            return sb.ToString();
+        }
+
+        public static string ShowWeights()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < Connections.Count; i++)
+            {
+                sb.Append($"e{i + 1}    Waga:{Connections[i][2]}\n");
+            }
+
             return sb.ToString();
         }
 

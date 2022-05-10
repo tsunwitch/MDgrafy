@@ -44,7 +44,7 @@ namespace MDgrafy
             MainCanvas.Children.Clear();
             vertexList.Clear();
             TBlock_Connections.Text = "";
-            TBlock_Weights.Text = String.Empty;
+            TBlock_Weights.Text = "";
             TBlock_Degrees.Text = "";
             TBlock_Cycle3.Text = "";
 
@@ -75,7 +75,7 @@ namespace MDgrafy
             //Dane
             TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections();
             //Wagi
-            TBlock_Weights.Text = "placeholder";
+            TBlock_Weights.Text = Edge.ShowWeights();
             //Stopnie
             TBlock_Degrees.Text = Vertex.ShowDegrees();
             //Cykle3
