@@ -190,7 +190,7 @@
                     Content="GENERUJ RAPORT"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Name="BTN_GenerateRaport" 
-                    Click="BTN_GenerateGraph_Click"
+                    Click="BTN_GenerateRaport_Click"
                     Grid.Column="1"
                     Foreground="#d9d9d9"/>
         </Grid>

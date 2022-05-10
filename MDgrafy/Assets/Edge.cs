@@ -123,9 +123,7 @@ namespace MDgrafy.Assets
                     if (j == 0)
                         sb.Append($"e{i + 1} = ( v{Connections[i][j] + 1},");
                     else if (j == 1)
-                        sb.Append($" v{Connections[i][j] + 1} )");
-                    else
-                        sb.Append($"    waga: {Connections[i][j]}\n");
+                        sb.Append($" v{Connections[i][j] + 1} )\n");
                 }
             }
             return sb.ToString();
