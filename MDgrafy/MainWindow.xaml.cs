@@ -44,6 +44,9 @@ namespace MDgrafy
             MainCanvas.Children.Clear();
             vertexList.Clear();
             TBlock_Connections.Text = "";
+            TBlock_Weights.Text = "";
+            TBlock_Degrees.Text = "";
+            TBlock_Cycle3.Text = "";
 
             if (TBox_NumberOfPoints.Text == "")
             {
@@ -69,8 +72,19 @@ namespace MDgrafy
                 Cycle.Edges = edgeList;
             }
 
-            TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections() + "\n" + "Ciąg stopni wierzchołków:" + "\n" + Vertex.ShowDegrees();
+            //Dane
+            TBlock_Connections.Text = "G = ( V, E )\n" + Edge.ShowEdges() + Vertex.ShowVertexes() + "\n" + Edge.ShowConnections();
+            //Wagi
+            TBlock_Weights.Text = Edge.ShowWeights();
+            //Stopnie
+            TBlock_Degrees.Text = Vertex.ShowDegrees();
+            //Cykle3
             TBlock_Cycle3.Text = Cycle.ShowCycles3();
+        }
+
+        private void BTN_GenerateRaport_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
